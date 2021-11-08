@@ -1,0 +1,28 @@
+﻿@model MVCStok.Models.Entity.tbl_Urunler
+@{
+    ViewBag.Title = "UrunGetir";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+@using (Html.BeginForm("UrunGuncelle", "Urun", FormMethod.Post))
+{
+    <h2>Ürün Güncelleme</h2>
+    <br />
+    @Html.HiddenFor(x => x.id, new { @class = "form-control" })
+    <br />
+    @Html.TextBoxFor(x => x.ad, new { @class = "form-control" })
+    <br />
+    @Html.TextBoxFor(x => x.marka, new { @class = "form-control" })
+    <br />
+    @Html.TextBoxFor(x => x.stok, new { @class = "form-control" })
+    <br />
+    @Html.TextBoxFor(x => x.alisFiyat, new { @class = "form-control" })
+    <br />
+    @Html.TextBoxFor(x => x.satisFiyat, new { @class = "form-control" })
+    <br />
+    @Html.DropDownListFor(x => x.tbl_Kategori.id, (List<SelectListItem>)ViewBag.urunkategori,
+    new { @class = "form-control" })
+    <button class="btn btn-warning" style="margin-top:10px">Güncelle</button>
+
+}
+

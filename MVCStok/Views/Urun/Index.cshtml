@@ -1,0 +1,49 @@
+﻿@using MVCStok.Models.Entity @*view de listelemek için entity'mizi yani modelimizi dahil ediyorduk*@
+@model List<tbl_Urunler>
+@*model adında bi dğeişken oluşturduk ve liste olarak tuttuk*@
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+@*Bir tane Html Beginform oluşturduk Bu Index'ten alacak değerleri hangi index'ten URun indexinden*@
+@* ne zaman çalışıcak Form method get olduğu zaman sonra bir paragraf oluşturduk *@
+@* Html.Text içine bir parametre gönderiyorum bu parametre (p) dedik çünkü controller tarafında p adında bir değişken oluşturduk *@
+@using (Html.BeginForm("Index","Urun",FormMethod.Get))
+{
+    <p>
+        Ürün Adı:@Html.TextBox("p")
+        <input type="submit"  value="Ara" />
+    </p>
+}
+
+<table class="table table-bordered">
+    <tr>
+        <th>ID</th>
+        <th>ÜRÜN ADI</th>
+        <th>MARKA</th>
+        <th>STOK</th>
+        <th>ALIŞ FİYAT</th>
+        <th>SATIŞ FİYAT</th>
+        <th>KATEGORİ</th>
+        <th>SİL</th>
+        <th>GÜNCELLE</th>
+    </tr>
+    @foreach (var x in Model)
+    {
+        <tr>
+            <td>@x.id</td>
+            <td>@x.ad</td>
+            <td>@x.marka</td>
+            <td>@x.stok</td>
+            <td>@x.alisFiyat</td>
+            <td>@x.satisFiyat</td>
+            <td>@x.tbl_Kategori.ad</td>@*Burada kategori kısmı foreign key olduğu için id göstermek yerine tbl_Kategori.ad dedik kategori tablosundaki ad'ı çektik*@
+            <td><a href="/Urun/UrunSil/@x.id" class="btn btn-danger">SİL</a></td>
+            <td><a href="/Urun/UrunGetir/@x.id" class="btn btn-success">GÜNCELLE</a></td>
+        </tr>
+    }
+</table>
+<a href="/Urun/YeniUrun/" class="btn btn-primary">Yeni Ürün Girişi</a>
+
+
+
