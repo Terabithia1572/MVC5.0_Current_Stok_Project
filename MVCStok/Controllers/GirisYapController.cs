@@ -24,7 +24,7 @@ namespace MVCStok.Controllers
             if( bilgiler !=null)
             {
                 FormsAuthentication.SetAuthCookie(bilgiler.kullanici, false);
-                return RedirectToAction("Index", "Musteri");
+                return RedirectToAction("Index","Musteri");
             }
             else
             {

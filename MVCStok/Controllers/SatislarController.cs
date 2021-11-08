@@ -12,6 +12,7 @@ namespace MVCStok.Controllers
         // GET: Satislar
 
         dbMvcStokEntities1 db = new dbMvcStokEntities1();
+       
         public ActionResult Index()
         {
             var satislar = db.tbl_Satislar.ToList();

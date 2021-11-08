@@ -15,7 +15,7 @@ namespace MVCStok.Controllers
 
         dbMvcStokEntities1 db = new dbMvcStokEntities1();
 
-        [Authorize]
+       
         public ActionResult Index(int sayfa=1)
         {
             // var musteriListe = db.tbl_Musteriler.ToList();
